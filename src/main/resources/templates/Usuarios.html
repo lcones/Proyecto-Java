@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>Usuarios</title>
+    
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+    
+ 	<link href="#" th:href="@{/css/contacts.css}" rel="stylesheet" />
+ 	
+  </head>
+
+  <body>
+	
+	<div class="container">
+	
+		<h1>Bienvenido!   <span th:text="${username}"></span></h1>
+		<br/>
+		<div class="row">
+		
+  		<div class="panel-heading col-12">
+  		
+  			<a href="#" th:href="@{/pv1/mostrartodos}" style="float: right; margin-right: 5px;">
+					<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>REST</button>
+		    </a>
+		    
+  			<form  th:action="@{/logout}" method="POST" style="float: right; ">
+					<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> SALIR</button>
+				</form>
+				<a href="#" th:href="@{/usuarios/usuarioform?id=0}" style="float: right; margin-right: 5px;">
+					<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> AGREGAR USUARIO</button>
+				</a>
+  		</div>
+  		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+			</div>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th>NOMBRES</th>
+						<th>APELLIDOS</th>
+						<th>CELULAR</th>
+						<th>CONTRASENA</th>
+						<th>ACCION</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="usuario : ${usuarios}">
+						<td th:text="${usuario.nombres}" ></td>
+						<td th:text="${usuario.apellidos}" ></td>
+						<td th:text="${usuario.celular}" ></td>
+						<td th:text="${usuario.contrasena}" ></td>
+						<td>
+						
+							<a href="#" th:href="@{/usuarios/usuarioform?id=__${usuario.id}__}">
+							<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+							</a>
+							<a href="#" th:href="@{/usuarios/removeusuarios?id=__${usuario.id}__}">
+							<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div th:if="${result == 1}" class="alert alert-succes" role="alert">Agregado Exitosamente!!!</div>
+		<div th:if="${result == 0}" class="alert alert-danger" role="alert">Error al agregar</div>
+	</div>
+
+<script  th:src="@{/js/Validadacion.js}"></script>  
+</body>
+</html>

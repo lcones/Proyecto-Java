@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/SYNOPSIS?useSSL=false
+    username: root
+    password: Synopsis2019
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      
+        
+    properties:
+      hibernate:
+        dialect:
+        storage:
+        engine: innodb
+       

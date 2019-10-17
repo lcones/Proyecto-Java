@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Backend Ninja - Add/modify Contact</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Contact Form</h1>
+			<br/>
+			<form   action="#" th:action="@{/usuarios/addusuarios2}" th:object="${usuarioModel}" method="post"  onsubmit= "return  Validar();">
+				
+				<input  type="hidden"  th:field="*{id}"></input>
+				
+				NOMBRES: <input id ="nombres" type="text" class="form-control" th:field="*{nombres}" th:value="${nombres}" required="true"></input>
+				<br/>
+				APELLIDOS: <input  id = "apellidos" type="text" class="form-control" th:field="*{apellidos}" th:value="${apellidos}" required="true"></input>
+				<br/>
+				CELULAR: <input id = "celular" type="text" class="form-control" th:field="*{celular}" th:value="${celular}" required="true"></input>
+				<br/>
+				CONTRASEÑA: <input id = "contrasena" type="text" class="form-control" th:field="*{contrasena}" th:value="${contrasena}" required="true"></input>
+				<br/>
+				<br/>
+				<button id = "Verificar"  class="btn btn-lg btn-primary btn-block" type="submit">
+					<span  class="glyphicon glyphicon-ok" aria-hidden="true"></span> Aceptar
+				</button>
+				
+			</form>
+			
+				<a href="#" th:href="@{/usuarios/cancel}">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar
+				</button>
+				</a>
+			
+		</div>
+	</div>
+	
+	<script  th:src="@{/js/Validadacion.js}"></script>  
+
+</body>
+</html>
